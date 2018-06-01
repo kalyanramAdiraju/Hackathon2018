@@ -31,10 +31,15 @@
             android:name=".activities.DashboardActivity"
             android:label="@string/title_activity_dashboard"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.currentAppraisal.AppraisalFormActivity"
             android:label="@string/title_activity_appraisal_form"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activities.PreviousAppraisalActivity"
+            android:label="@string/title_activity_previous_appraisal"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

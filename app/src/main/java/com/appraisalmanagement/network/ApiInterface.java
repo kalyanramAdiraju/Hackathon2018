@@ -1,5 +1,6 @@
 package com.appraisalmanagement.network;
 
+import com.appraisalmanagement.models.AppraisalFormDataModel;
 import com.appraisalmanagement.models.DataObjectModel;
 import com.appraisalmanagement.models.LoginModel;
 import com.appraisalmanagement.models.SampleJsonModel;
@@ -21,12 +22,12 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
 
-    @POST("/login")
-    Call<LoginModel> sendLoginInfoToServer(@Query("email") String email,@Query("password") String password, @Body HashMap<String,Object> map);
+    @GET("/login")
+    Call<LoginModel> sendLoginInfoToServer(@Query("email") String email,@Query("password") String password);
 
     @GET
     Call<ResponseBody> downloadPdfs(String url);
 
-    @GET("/posts")
-    Call<List<DataObjectModel>> getSampleData();
+    @POST("/saveFormData")
+    Call<AppraisalFormDataModel> sendAppraisalFormData(@Query("userId") int userId,@Body HashMap<String,Object> map);
 }

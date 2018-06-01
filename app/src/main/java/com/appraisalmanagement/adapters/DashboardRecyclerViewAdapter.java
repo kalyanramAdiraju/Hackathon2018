@@ -1,6 +1,7 @@
 package com.appraisalmanagement.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.appraisalmanagement.R;
+import com.appraisalmanagement.activities.PreviousAppraisalActivity;
+import com.appraisalmanagement.activities.currentAppraisal.AppraisalFormActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,7 +45,7 @@ public class DashboardRecyclerViewAdapter extends RecyclerView.Adapter<Dashboard
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DashboardRecyclerViewAdapter.DashboardViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final DashboardRecyclerViewAdapter.DashboardViewHolder holder, int position) {
         if (role == 1) {
             holder.textView.setText(employeesArray[position]);
         }else if (role==2){
@@ -50,6 +53,17 @@ public class DashboardRecyclerViewAdapter extends RecyclerView.Adapter<Dashboard
         }else {
             holder.textView.setText(hrArray[position]);
         }
+        holder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if ("Previous Appraisals".equals(holder.textView.getText().toString())){
+                    mContext.startActivity(new Intent(mContext,PreviousAppraisalActivity.class));
+                }else if ("Current Appraisal".equals(holder.textView.getText().toString())){
+                    mContext.startActivity(new Intent(mContext,AppraisalFormActivity.class));
+
+                }
+            }
+        });
     }
 
     @Override

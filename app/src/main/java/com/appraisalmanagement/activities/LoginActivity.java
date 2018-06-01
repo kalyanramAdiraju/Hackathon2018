@@ -52,11 +52,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void submitApiCall() {
-        HashMap<String, Object> map = new HashMap<>();
         Call<LoginModel> loginCall = RestClient
                 .getApplicationData()
                 .sendLoginInfoToServer(mEmailEditText.getText().toString(),
-                        mPasswordEditText.getText().toString(),map);
+                        mPasswordEditText.getText().toString());
         loginCall.enqueue(new Callback<LoginModel>() {
             @Override
             public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
