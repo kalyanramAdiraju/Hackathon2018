@@ -14,6 +14,7 @@ import com.appraisalmanagement.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -40,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void submitApiCall() {
-
+        /*Call<>*/
     }
 
     private boolean validations() {
