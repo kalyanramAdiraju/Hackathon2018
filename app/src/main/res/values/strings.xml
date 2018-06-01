@@ -3,4 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_pdf_view">PdfViewActivity</string>
     <string name="signIn">sign in</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="title_activity_appraisal_form">AppraisalFormActivity</string>
 </resources>

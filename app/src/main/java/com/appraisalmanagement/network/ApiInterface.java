@@ -13,6 +13,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * Created by nineleaps on 31/5/18.
@@ -21,7 +22,7 @@ import retrofit2.http.POST;
 public interface ApiInterface {
 
     @POST("/login")
-    Call<LoginModel> sendLoginInfoToServer(@Header("Authorization")String token, @Body HashMap<String,Object> map);
+    Call<LoginModel> sendLoginInfoToServer(@Query("email") String email,@Query("password") String password, @Body HashMap<String,Object> map);
 
     @GET
     Call<ResponseBody> downloadPdfs(String url);

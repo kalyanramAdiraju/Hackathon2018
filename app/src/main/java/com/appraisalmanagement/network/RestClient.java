@@ -28,7 +28,7 @@ public class RestClient {
             final Retrofit retrofit = new Retrofit.Builder()
                     .addConverterFactory(JacksonConverterFactory.create(mapper))
                     .client(client.build())
-                    .baseUrl("https://jsonplaceholder.typicode.com").build();
+                    .baseUrl("http://34.244.18.33:9095").build();
             apiInterface = retrofit.create(ApiInterface.class);
 
         }
