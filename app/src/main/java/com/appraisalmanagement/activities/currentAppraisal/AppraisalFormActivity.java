@@ -52,8 +52,16 @@ public class AppraisalFormActivity extends AppCompatActivity {
     TextInputLayout assestingOtherLayout;
     @BindView(R.id.others_layout)
     TextInputLayout otherLayout;
+    @BindView(R.id.manager_feedback_layout)
+    TextInputLayout managerFeedbackLayout;
+    @BindView(R.id.manager_rating_layout)
+    TextInputLayout managerRatingLayout;
 
 
+    @BindView(R.id.manager_rating_edittext)
+    EditText managerRatingEdittext;
+    @BindView(R.id.manager_feedback_edittext)
+    EditText managerFeedbackEditext;
     @BindView(R.id.project_role_edittext)
     EditText projectEdittext;
     @BindView(R.id.contributions_edittext)
@@ -105,6 +113,7 @@ public class AppraisalFormActivity extends AppCompatActivity {
 
     private void submitFormDetails(HashMap<String, Object> mapTest) {
         Log.d("mapTest===", String.valueOf(mapTest));
+        Log.d("userId", String.valueOf(userId));
         Call<AppraisalFormDataModel> retrofitCall = RestClient
                 .getApplicationData()
                 .sendAppraisalFormData(userId, mapTest);
@@ -136,19 +145,30 @@ public class AppraisalFormActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appraisal_form);
+        ButterKnife.bind(this);
+        getBundleData();
         SharedPreferences sharedPreferences = getSharedPreferences("userDetails",
                 MODE_PRIVATE);
         userId = sharedPreferences.getInt("userId", -1);
         isEditable = sharedPreferences.getBoolean("isEditable", false);
+        if (-1!=reporteeFlag){
+            userId = sharedPreferences.getInt("userId", -1);
+
+        }else {
+            managerFeedbackLayout.setVisibility(View.GONE);
+            managerRatingLayout.setVisibility(View.GONE);
+
+        }
+        isEditable = sharedPreferences.getBoolean("isEditable", false);
         if (!isEditable){
             getFormDataFromServer();
         }
-        ButterKnife.bind(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        getBundleData();
+
 
         appraisalAdapter = new AppraisalAdapter(this, reporteeFlag, new ImpactInterface() {
             @Override
@@ -162,7 +182,7 @@ public class AppraisalFormActivity extends AppCompatActivity {
 
     private void getFormDataFromServer() {
         final GetAppraisalFormDataModelData getAppraisalFormDataModelData = new GetAppraisalFormDataModelData();
-
+        Log.d("userId", String.valueOf(userId));
         Call<GetAppraisalFormDataModel> retrofitCall = RestClient
                 .getApplicationData()
                 .getAppraisalFormData(userId);
@@ -221,7 +241,11 @@ public class AppraisalFormActivity extends AppCompatActivity {
     }
 
     private void getBundleData() {
-        reporteeFlag = getIntent().getIntExtra("reporteesFlag", -1);
+        reporteeFlag = getIntent().getIntExtra("reporteeFlag", -1);
+        Log.d("reporteeFlag", String.valueOf(reporteeFlag));
+        if (-1!=reporteeFlag){
+            userId=getIntent().getIntExtra("userId",-1);
+        }
 
     }
     @Override

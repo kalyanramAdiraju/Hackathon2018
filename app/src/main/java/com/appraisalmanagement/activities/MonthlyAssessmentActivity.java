@@ -1,10 +1,12 @@
 package com.appraisalmanagement.activities;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +35,7 @@ public class MonthlyAssessmentActivity extends AppCompatActivity {
 
     @BindView(R.id.submit)
     Button submit;
+    int empNumber;
 
     @OnClick(R.id.submit)
     public void onSubmitForm(){
@@ -89,9 +92,12 @@ public class MonthlyAssessmentActivity extends AppCompatActivity {
     }
 
     private void getDataFromServer() {
+        SharedPreferences sharedPreferences = getSharedPreferences("userDetails",
+                MODE_PRIVATE);
+        empNumber= sharedPreferences.getInt("employeeNumber", -1);
         Call<MonthlyModel> retrtofitCall= RestClient
                 .getApplicationData()
-                .getMonthlyAssignmentsData();
+                .getMonthlyAssignmentsData(empNumber);
         retrtofitCall.enqueue(new Callback<MonthlyModel>() {
             @Override
             public void onResponse(Call<MonthlyModel> call, Response<MonthlyModel> response) {
@@ -100,12 +106,14 @@ public class MonthlyAssessmentActivity extends AppCompatActivity {
                         monthlyDescription.setText(response.body().getData());
                     }
                 }else {
+                    Log.d("response", String.valueOf(response.code()));
                     Toast.makeText(MonthlyAssessmentActivity.this, "Something went Wrong!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<MonthlyModel> call, Throwable t) {
+                Log.d("response", String.valueOf(t));
                 Toast.makeText(MonthlyAssessmentActivity.this, String.valueOf(t), Toast.LENGTH_SHORT).show();
             }
         });

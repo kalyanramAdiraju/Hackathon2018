@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,12 +57,15 @@ public class AppraisalAdapter extends RecyclerView.Adapter<AppraisalAdapter.Appr
     @Override
     public void onBindViewHolder(@NonNull AppraisalAdapter.AppraisalViewHolder holder, int position) {
         holder.textView.setText(impactArray[position]);
+        Log.d("reporteeFlag==", String.valueOf(reporteeFlag));
         if (-1!=reporteeFlag){
+            Log.d("hello3","1");
             holder.managerTextView.setOnClickListener(getSingleSelectedPopUp(holder,2,position));
             impactInterface.sendTextDataToActivity(holder.managerTextView.getText().toString(),mapData);
             holder.selfTextView.setOnClickListener(null);
             holder.selfTextView.setTextColor(Color.parseColor("#c0c0c0"));
         }else {
+            Log.d("hello3","2");
             holder.managerTextView.setOnClickListener(null);
             holder.selfTextView.setOnClickListener(getSingleSelectedPopUp(holder,1,position));
             impactInterface.sendTextDataToActivity(holder.selfTextView.getText().toString(),mapData);

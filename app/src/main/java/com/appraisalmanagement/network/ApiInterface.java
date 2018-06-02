@@ -6,6 +6,7 @@ import com.appraisalmanagement.models.GetAppraisalFormDataModel;
 import com.appraisalmanagement.models.LoginModel;
 import com.appraisalmanagement.models.MonthlyModel;
 import com.appraisalmanagement.models.PostMontlyData;
+import com.appraisalmanagement.models.ReporteesModel;
 import com.appraisalmanagement.models.SampleJsonModel;
 
 import java.util.HashMap;
@@ -16,7 +17,9 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -37,9 +40,12 @@ public interface ApiInterface {
     @GET("/getFormData")
     Call<GetAppraisalFormDataModel> getAppraisalFormData(@Query("userId") int userId);
 
-    @GET("/getMonthlyAssignmentsData")
-    Call<MonthlyModel> getMonthlyAssignmentsData();
+    @GET("/one/{empId}")
+    Call<MonthlyModel> getMonthlyAssignmentsData(@Path("empId") int empId);
 
     @POST("/saveMontlyData")
     Call<PostMontlyData> postMonthlyData(@Body HashMap<String, Object> map);
+
+    @GET("/getRepoteeInfo")
+    Call<ReporteesModel> getReporteesData(@Query("userId") int userId);
 }

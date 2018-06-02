@@ -82,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("userDetails" , Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=sp.edit();
         editor.putInt("role",response.body().getData().getRole());
+        editor.putString("employeeNumber",response.body().getData().getEmployeeNumber());
         editor.putInt("userId",response.body().getData().getUserId());
         editor.putBoolean("isEditable",response.body().getData().isEditable());
         editor.putString("emailId",response.body().getData().getEmailId());
