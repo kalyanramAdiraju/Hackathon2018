@@ -52,10 +52,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void submitApiCall() {
+        HashMap<String,Object> map=new HashMap<>();
+        map.put("email",mEmailEditText.getText().toString());
+        map.put("password",mPasswordEditText.getText().toString());
         Call<LoginModel> loginCall = RestClient
                 .getApplicationData()
-                .sendLoginInfoToServer(mEmailEditText.getText().toString(),
-                        mPasswordEditText.getText().toString());
+                .sendLoginInfoToServer(map);
         loginCall.enqueue(new Callback<LoginModel>() {
             @Override
             public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
@@ -81,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences.Editor editor=sp.edit();
         editor.putInt("role",response.body().getData().getRole());
         editor.putInt("userId",response.body().getData().getUserId());
+        editor.putBoolean("isEditable",response.body().getData().isEditable());
         editor.putString("emailId",response.body().getData().getEmailId());
         editor.commit();
     }

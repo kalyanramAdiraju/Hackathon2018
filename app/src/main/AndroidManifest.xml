@@ -36,10 +36,22 @@
             android:name=".activities.currentAppraisal.AppraisalFormActivity"
             android:label="@string/title_activity_appraisal_form"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.PreviousAppraisalActivity"
             android:label="@string/title_activity_previous_appraisal"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SummaryActivity"
+            android:label="@string/title_activity_summary"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.MyReporteesActivity"
+            android:label="@string/title_activity_my_reportees"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.MonthlyAssessmentActivity"
+            android:label="@string/title_activity_monthly_assessment"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

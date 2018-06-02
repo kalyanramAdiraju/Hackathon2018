@@ -2,7 +2,10 @@ package com.appraisalmanagement.network;
 
 import com.appraisalmanagement.models.AppraisalFormDataModel;
 import com.appraisalmanagement.models.DataObjectModel;
+import com.appraisalmanagement.models.GetAppraisalFormDataModel;
 import com.appraisalmanagement.models.LoginModel;
+import com.appraisalmanagement.models.MonthlyModel;
+import com.appraisalmanagement.models.PostMontlyData;
 import com.appraisalmanagement.models.SampleJsonModel;
 
 import java.util.HashMap;
@@ -22,12 +25,21 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
 
-    @GET("/login")
-    Call<LoginModel> sendLoginInfoToServer(@Query("email") String email,@Query("password") String password);
+    @POST("/login")
+    Call<LoginModel> sendLoginInfoToServer(@Body HashMap<String, Object> map);
 
     @GET
     Call<ResponseBody> downloadPdfs(String url);
 
     @POST("/saveFormData")
-    Call<AppraisalFormDataModel> sendAppraisalFormData(@Query("userId") int userId,@Body HashMap<String,Object> map);
+    Call<AppraisalFormDataModel> sendAppraisalFormData(@Query("userId") int userId, @Body HashMap<String, Object> map);
+
+    @GET("/getFormData")
+    Call<GetAppraisalFormDataModel> getAppraisalFormData(@Query("userId") int userId);
+
+    @GET("/getMonthlyAssignmentsData")
+    Call<MonthlyModel> getMonthlyAssignmentsData();
+
+    @POST("/saveMontlyData")
+    Call<PostMontlyData> postMonthlyData(@Body HashMap<String, Object> map);
 }

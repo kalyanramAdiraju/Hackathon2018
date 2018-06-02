@@ -6,4 +6,7 @@
     <string name="title_activity_dashboard">Dashboard</string>
     <string name="title_activity_appraisal_form">Appraisal Form</string>
     <string name="title_activity_previous_appraisal">PreviousAppraisalActivity</string>
+    <string name="title_activity_summary">SummaryActivity</string>
+    <string name="title_activity_my_reportees">MyReporteesActivity</string>
+    <string name="title_activity_monthly_assessment">MonthlyAssessmentActivity</string>
 </resources>

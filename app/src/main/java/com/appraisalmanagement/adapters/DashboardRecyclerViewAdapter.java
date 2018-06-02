@@ -11,7 +11,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.appraisalmanagement.R;
+import com.appraisalmanagement.activities.MonthlyAssessmentActivity;
+import com.appraisalmanagement.activities.MyReporteesActivity;
 import com.appraisalmanagement.activities.PreviousAppraisalActivity;
+import com.appraisalmanagement.activities.SummaryActivity;
 import com.appraisalmanagement.activities.currentAppraisal.AppraisalFormActivity;
 
 import butterknife.BindView;
@@ -60,7 +63,12 @@ public class DashboardRecyclerViewAdapter extends RecyclerView.Adapter<Dashboard
                     mContext.startActivity(new Intent(mContext,PreviousAppraisalActivity.class));
                 }else if ("Current Appraisal".equals(holder.textView.getText().toString())){
                     mContext.startActivity(new Intent(mContext,AppraisalFormActivity.class));
-
+                }else if ("Monthly Assignments".equals(holder.textView.getText().toString())){
+                    mContext.startActivity(new Intent(mContext,MonthlyAssessmentActivity.class));
+                }else if ("My Reportees".equals(holder.textView.getText().toString())){
+                    mContext.startActivity(new Intent(mContext,MyReporteesActivity.class));
+                }else if ("Summary".equals(holder.textView.getText().toString())){
+                    mContext.startActivity(new Intent(mContext,SummaryActivity.class));
                 }
             }
         });

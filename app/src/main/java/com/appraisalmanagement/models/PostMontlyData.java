@@ -4,17 +4,9 @@ package com.appraisalmanagement.models;
  * Created by nineleaps on 2/6/18.
  */
 
-public class AppraisalFormDataModel {
+public class PostMontlyData {
     String status;
-    String data;
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
+    String  message;
 
     public String getStatus() {
         return status;
@@ -24,5 +16,11 @@ public class AppraisalFormDataModel {
         this.status = status;
     }
 
+    public String getMessage() {
+        return message;
+    }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }
