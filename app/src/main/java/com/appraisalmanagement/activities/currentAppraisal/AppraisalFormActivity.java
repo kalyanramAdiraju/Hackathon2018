@@ -149,16 +149,21 @@ public class AppraisalFormActivity extends AppCompatActivity {
         getBundleData();
         SharedPreferences sharedPreferences = getSharedPreferences("userDetails",
                 MODE_PRIVATE);
-        userId = sharedPreferences.getInt("userId", -1);
-        isEditable = sharedPreferences.getBoolean("isEditable", false);
-        if (-1!=reporteeFlag){
+        if (reporteeFlag!=1){
             userId = sharedPreferences.getInt("userId", -1);
+        }else {
+            userId=getIntent().getIntExtra("userId",-1);
 
+        }
+
+        if (reporteeFlag==1){
+            managerFeedbackLayout.setVisibility(View.VISIBLE);
+            managerRatingLayout.setVisibility(View.VISIBLE);
         }else {
             managerFeedbackLayout.setVisibility(View.GONE);
             managerRatingLayout.setVisibility(View.GONE);
-
         }
+
         isEditable = sharedPreferences.getBoolean("isEditable", false);
         if (!isEditable){
             getFormDataFromServer();
@@ -242,11 +247,6 @@ public class AppraisalFormActivity extends AppCompatActivity {
 
     private void getBundleData() {
         reporteeFlag = getIntent().getIntExtra("reporteeFlag", -1);
-        Log.d("reporteeFlag", String.valueOf(reporteeFlag));
-        if (-1!=reporteeFlag){
-            userId=getIntent().getIntExtra("userId",-1);
-        }
-
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

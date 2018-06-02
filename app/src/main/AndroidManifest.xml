@@ -48,10 +48,12 @@
         <activity
             android:name=".activities.MyReporteesActivity"
             android:label="@string/title_activity_my_reportees"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.MonthlyAssessmentActivity"
             android:label="@string/title_activity_monthly_assessment"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

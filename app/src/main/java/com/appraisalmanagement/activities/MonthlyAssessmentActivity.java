@@ -35,7 +35,7 @@ public class MonthlyAssessmentActivity extends AppCompatActivity {
 
     @BindView(R.id.submit)
     Button submit;
-    int empNumber;
+    String empNumber;
 
     @OnClick(R.id.submit)
     public void onSubmitForm(){
@@ -94,7 +94,7 @@ public class MonthlyAssessmentActivity extends AppCompatActivity {
     private void getDataFromServer() {
         SharedPreferences sharedPreferences = getSharedPreferences("userDetails",
                 MODE_PRIVATE);
-        empNumber= sharedPreferences.getInt("employeeNumber", -1);
+        empNumber= sharedPreferences.getString("employeeNumber","NA");
         Call<MonthlyModel> retrtofitCall= RestClient
                 .getApplicationData()
                 .getMonthlyAssignmentsData(empNumber);

@@ -41,7 +41,7 @@ public interface ApiInterface {
     Call<GetAppraisalFormDataModel> getAppraisalFormData(@Query("userId") int userId);
 
     @GET("/one/{empId}")
-    Call<MonthlyModel> getMonthlyAssignmentsData(@Path("empId") int empId);
+    Call<MonthlyModel> getMonthlyAssignmentsData(@Path("empId") String  empId);
 
     @POST("/saveMontlyData")
     Call<PostMontlyData> postMonthlyData(@Body HashMap<String, Object> map);
