@@ -46,7 +46,8 @@ public class MonthlyAssessmentActivity extends AppCompatActivity {
 
     private void sendDataToServer() {
         HashMap<String,Object> maps=new HashMap<>();
-        maps.put("monthlyData",monthlyDescription.getText().toString());
+        maps.put("employeeComments",monthlyDescription.getText().toString());
+        maps.put("employeeId",empNumber);
         Call<PostMontlyData> retrtofitCall= RestClient
                 .getApplicationData()
                 .postMonthlyData(maps);
@@ -107,14 +108,12 @@ public class MonthlyAssessmentActivity extends AppCompatActivity {
                     }
                 }else {
                     Log.d("response", String.valueOf(response.code()));
-                    Toast.makeText(MonthlyAssessmentActivity.this, "Something went Wrong!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<MonthlyModel> call, Throwable t) {
                 Log.d("response", String.valueOf(t));
-                Toast.makeText(MonthlyAssessmentActivity.this, String.valueOf(t), Toast.LENGTH_SHORT).show();
             }
         });
     }

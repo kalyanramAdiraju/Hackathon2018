@@ -43,7 +43,7 @@ public interface ApiInterface {
     @GET("/one/{empId}")
     Call<MonthlyModel> getMonthlyAssignmentsData(@Path("empId") String  empId);
 
-    @POST("/saveMontlyData")
+    @POST("/one")
     Call<PostMontlyData> postMonthlyData(@Body HashMap<String, Object> map);
 
     @GET("/getRepoteeInfo")

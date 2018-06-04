@@ -30,9 +30,9 @@ public class DashboardRecyclerViewAdapter extends RecyclerView.Adapter<Dashboard
     private LayoutInflater layoutInflater;
     private View view;
     private int role;
-    private String[] employeesArray={"Previous Appraisals","Current Appraisal","Monthly Assignments"};
-    private String[] managersArray = {"Previous Appraisals","Current Appraisal","Monthly Assignments","My Reportees"};
-    private String[] hrArray = {"Previous Appraisals","Current Appraisal","Monthly Assignments","My Reportees","Summary"};
+    private String[] employeesArray={"Previous Appraisals","Current Appraisal","Assignments Feedback"};
+    private String[] managersArray = {"Previous Appraisals","Current Appraisal","Assignments Feedback","Pending Appraisals"};
+    private String[] hrArray = {"Previous Appraisals","Current Appraisal","Assignments Feedback","Pending Appraisals","Reports"};
 
     public DashboardRecyclerViewAdapter(Context mContext, int role) {
         this.role = role;
@@ -63,11 +63,11 @@ public class DashboardRecyclerViewAdapter extends RecyclerView.Adapter<Dashboard
                     mContext.startActivity(new Intent(mContext,PreviousAppraisalActivity.class));
                 }else if ("Current Appraisal".equals(holder.textView.getText().toString())){
                     mContext.startActivity(new Intent(mContext,AppraisalFormActivity.class));
-                }else if ("Monthly Assignments".equals(holder.textView.getText().toString())){
+                }else if ("Assignments Feedback".equals(holder.textView.getText().toString())){
                     mContext.startActivity(new Intent(mContext,MonthlyAssessmentActivity.class));
-                }else if ("My Reportees".equals(holder.textView.getText().toString())){
+                }else if ("Pending Appraisals".equals(holder.textView.getText().toString())){
                     mContext.startActivity(new Intent(mContext,MyReporteesActivity.class));
-                }else if ("Summary".equals(holder.textView.getText().toString())){
+                }else if ("Reports".equals(holder.textView.getText().toString())){
                     mContext.startActivity(new Intent(mContext,SummaryActivity.class));
                 }
             }
